@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 export const serverConfig: ServerConfiguration = {
   // Server environment
-  env: 'dev',
+  env: 'development',
 
   // Server Domain
   domain: 'http://localhost',
@@ -13,8 +13,8 @@ export const serverConfig: ServerConfiguration = {
 };
 
 // Override settings depending on server environment
-if (process.env.NODE_ENV === 'prod') {
-  serverConfig.env = 'prod';
+if (process.env.NODE_ENV === 'production') {
+  serverConfig.env = 'production';
   serverConfig.domain = <string>process.env.DOMAIN;
   serverConfig.port = parseInt(<string>process.env.PORT);
 }

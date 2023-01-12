@@ -4,11 +4,16 @@
   "description": "Blackjack game to practice CICD methodology",
   "main": "app.js",
   "scripts": {
+    "build": "npx tsc && webpack",
+    "start": "npx tsc && node dist/app.js",
+    "watch": "run-p -r watch:resources watch:src",
+    "watch:resources": "webpack --watch",
     "watch:src": "nodemon src/app.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "loglevel": "^1.8.1"
