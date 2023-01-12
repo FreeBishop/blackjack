@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "resolveJsonModule": true
+    },
+    "extends": "@tsconfig/recommended/tsconfig.json",
+    "exclude": ["node_modules"],
+    "include": ["src"],
+  }
+  
