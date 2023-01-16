@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx tsc && webpack",
     "start": "npx tsc && node dist/app.js",
+    "test": "jest",
     "watch": "run-p -r watch:resources watch:src",
     "watch:resources": "webpack --watch",
     "watch:src": "nodemon src/app.ts"
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/express": "^4.17.15",
+    "@types/jest": "^29.2.5",
     "@types/node": "^18.11.18",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
