@@ -50,13 +50,23 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
 
 /***/ }),
 
+/***/ "./resources/ts/helpers/calculateCardValue.ts":
+/*!****************************************************!*\
+  !*** ./resources/ts/helpers/calculateCardValue.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.calculateHandValue = void 0;\r\n/**\r\n *  Calculate the total value of a hand (Blackjack) by iterating through each card\r\n *\r\n * @param {Card[]} hand Array representing the cards in a player/dealer hand\r\n */\r\nconst calculateHandValue = (hand) => {\r\n    let handValue = 0;\r\n    // Iterate through hand and sum up each card value\r\n    hand.map((card) => {\r\n        // Initial check for if face is a letter, otherwise do regular string -> number conversion\r\n        if (isNaN(Number(card.getValue))) {\r\n            switch (card.getValue) {\r\n                case 'A':\r\n                    if (handValue < 11) {\r\n                        handValue += 11;\r\n                    }\r\n                    else {\r\n                        handValue++;\r\n                    }\r\n                    break;\r\n                case 'J':\r\n                    handValue += 10;\r\n                    break;\r\n                case 'Q':\r\n                    handValue += 10;\r\n                    break;\r\n                case 'K':\r\n                    handValue += 10;\r\n                    break;\r\n                // Default case handling unexpected letters\r\n                default:\r\n                    handValue += 0;\r\n                    break;\r\n            }\r\n        }\r\n        else {\r\n            handValue += Number(card.getValue);\r\n        }\r\n    });\r\n    return handValue;\r\n};\r\nexports.calculateHandValue = calculateHandValue;\r\n\n\n//# sourceURL=webpack://blackjack/./resources/ts/helpers/calculateCardValue.ts?");
+
+/***/ }),
+
 /***/ "./resources/ts/homePage.ts":
 /*!**********************************!*\
   !*** ./resources/ts/homePage.ts ***!
   \**********************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst Deck_1 = __importDefault(__webpack_require__(/*! ./classes/Deck */ \"./resources/ts/classes/Deck.ts\"));\r\n__webpack_require__(/*! ../scss/homePage */ \"./resources/scss/homePage.scss\");\r\nconst dealerDeck = new Deck_1.default();\r\ndealerDeck.shuffle();\r\nconsole.log(dealerDeck);\r\n\n\n//# sourceURL=webpack://blackjack/./resources/ts/homePage.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst calculateCardValue_1 = __webpack_require__(/*! ./helpers/calculateCardValue */ \"./resources/ts/helpers/calculateCardValue.ts\");\r\nconst Deck_1 = __importDefault(__webpack_require__(/*! ./classes/Deck */ \"./resources/ts/classes/Deck.ts\"));\r\n__webpack_require__(/*! ../scss/homePage */ \"./resources/scss/homePage.scss\");\r\nconst Card_1 = __importDefault(__webpack_require__(/*! ./classes/Card */ \"./resources/ts/classes/Card.ts\"));\r\n// Create playing deck\r\nconst dealerDeck = new Deck_1.default();\r\ndealerDeck.shuffle();\r\n// Test function that calculates total hand value\r\nconst card1 = new Card_1.default('♣', 'J');\r\nconst card2 = new Card_1.default('♣', '9');\r\nconst card3 = new Card_1.default('♣', 'A');\r\nconst hand1 = [card1, card2]; // 19\r\nconst hand2 = [card2, card3]; // 20\r\nconst hand3 = [card1, card3]; // 21\r\nconst hand4 = [card3, card3]; // 12\r\nconst hand5 = [card1, card2, card3]; // 20\r\nconsole.log((0, calculateCardValue_1.calculateHandValue)(hand1));\r\nconsole.log((0, calculateCardValue_1.calculateHandValue)(hand2));\r\nconsole.log((0, calculateCardValue_1.calculateHandValue)(hand3));\r\nconsole.log((0, calculateCardValue_1.calculateHandValue)(hand4));\r\nconsole.log((0, calculateCardValue_1.calculateHandValue)(hand5));\r\n\n\n//# sourceURL=webpack://blackjack/./resources/ts/homePage.ts?");
 
 /***/ })
 
