@@ -3,4 +3,4 @@ import { initRoutes } from './initRoutes';
 // Main server entry point
 initRoutes();
 
-console.log('Hello Jenkins');
+console.log('Hello Jenkins #2');
